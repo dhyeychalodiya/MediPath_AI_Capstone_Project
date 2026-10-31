@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediPath AI</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    body {
+      background: radial-gradient(ellipse at top, #e0f2fe 0%, #ffffff 85%);
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid rgba(14, 165, 233, 0.2);
+      border-radius: 24px;
+      -webkit-app-region: drag;
+      box-shadow: 0 10px 40px -10px rgba(14, 165, 233, 0.15);
+    }
+
+    .container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .logo-box {
+      width: 108px;
+      height: 108px;
+      padding: 4px;
+      border-radius: 26px;
+      background: #ffffff;
+      border: 1px solid rgba(14, 165, 233, 0.2);
+      box-shadow: 0 4px 20px -2px rgba(14, 165, 233, 0.15);
+      animation: gentlePop 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 22px;
+    }
+
+    @keyframes gentlePop {
+      0% {
+        transform: scale(0.88);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo-box">
+      <img src="assets/icon.png" alt="MediPath AI Logo" class="logo-img" onerror="this.src='dist/logo.png'">
+    </div>
+  </div>
+</body>
+</html>

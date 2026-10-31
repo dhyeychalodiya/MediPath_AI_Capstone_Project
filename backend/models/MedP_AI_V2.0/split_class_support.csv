@@ -1,0 +1,57 @@
+canonical_class,class_index,total_records,train_records,val_records,test_records,target_met_val,target_met_test
+"Acne",0,1057,740,159,158,YES,YES
+"Allergic Conjunctivitis",1,3028,2120,454,454,YES,YES
+"Allergic Reaction / Urticaria",2,4032,2822,605,605,YES,YES
+"Allergic Rhinitis",3,1845,1292,277,276,YES,YES
+"Anal Fissure",4,922,649,137,136,YES,YES
+"Anxiety Disorder",5,4935,3455,740,740,YES,YES
+"Appendicitis",6,4459,3121,669,669,YES,YES
+"Asthma",7,2281,1597,342,342,YES,YES
+"Bacterial Vaginosis",8,563,394,84,85,YES,YES
+"Benign Prostatic Hyperplasia / BPH",9,1166,816,175,175,YES,YES
+"Blepharitis",10,1442,1014,214,214,YES,YES
+"Bronchitis",11,3174,2222,476,476,YES,YES
+"Carpal Tunnel Syndrome",12,1564,1094,235,235,YES,YES
+"Cellulitis",13,3102,2172,465,465,YES,YES
+"Cervical Spondylosis",14,1016,712,152,152,YES,YES
+"Common Cold / Upper Respiratory Infection",15,6450,4515,968,967,YES,YES
+"Conjunctivitis",16,5155,3609,773,773,YES,YES
+"Contact Dermatitis",17,850,598,126,126,YES,YES
+"Dental Abscess",18,594,243,175,176,YES,YES
+"Depressive Symptoms",19,7950,5565,1193,1192,YES,YES
+"Eczema / Atopic Dermatitis",20,6577,4604,987,986,YES,YES
+"Endometriosis",21,4289,3003,643,643,YES,YES
+"Frozen Shoulder",22,217,77,71,69,YES,YES
+"Gastritis",23,1119,778,171,170,YES,YES
+"Gastroenteritis",24,4815,3371,722,722,YES,YES
+"Gastroesophageal Reflux Disease / GERD",25,1611,1127,242,242,YES,YES
+"Gingivitis / Periodontal Disease",26,701,491,105,105,YES,YES
+"Hemorrhoids",27,1481,1037,222,222,YES,YES
+"Hypothyroidism",28,734,514,110,110,YES,YES
+"Influenza",29,6688,4682,1003,1003,YES,YES
+"Iron-Deficiency Anaemia",30,493,259,117,117,YES,YES
+"Irritable Bowel Syndrome / IBS",31,2819,1973,423,423,YES,YES
+"Kidney Stones",32,3537,2475,531,531,YES,YES
+"Migraine",33,3283,2298,492,493,YES,YES
+"Muscle Strain / Sprain",34,283,162,60,61,YES,YES
+"Osteoarthritis",35,7179,5025,1077,1077,YES,YES
+"Otitis Externa",36,1875,1313,281,281,YES,YES
+"Otitis Media",37,5207,3645,781,781,YES,YES
+"Panic Attack / Panic Disorder",38,1914,1340,287,287,YES,YES
+"Pelvic Inflammatory Disease / PID",39,4729,3311,709,709,YES,YES
+"Peptic Ulcer Disease",40,2497,1749,374,374,YES,YES
+"Pharyngitis / Strep Throat",41,2814,1970,422,422,YES,YES
+"Pneumonia",42,6314,4420,947,947,YES,YES
+"Prostatitis",43,1933,1353,290,290,YES,YES
+"Psoriasis",44,6334,4434,950,950,YES,YES
+"Sciatica",45,1362,954,204,204,YES,YES
+"Seborrheic Dermatitis",46,388,208,90,90,YES,YES
+"Sinusitis",47,3518,2462,528,528,YES,YES
+"Stye / Chalazion",48,494,219,138,137,YES,YES
+"Tension Headache",49,964,674,145,145,YES,YES
+"Tonsillitis",50,918,643,138,137,YES,YES
+"Urinary Tract Infection / UTI",51,8596,6018,1289,1289,YES,YES
+"Uterine Fibroids",52,1778,1244,267,267,YES,YES
+"Vaginal Candidiasis / Yeast Infection",53,467,197,135,135,YES,YES
+"Vertigo / BPPV",54,179,55,62,62,YES,YES
+"Viral Warts",55,759,530,115,114,YES,YES

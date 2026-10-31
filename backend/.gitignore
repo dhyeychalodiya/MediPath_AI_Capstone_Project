@@ -1,0 +1,21 @@
+# Environment files and credentials
+.env
+.env.*
+*.local
+!.env.example
+
+# Dependencies
+node_modules/
+.venv/
+.venv-1/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Logs
+logs/
+*.log
+npm-debug.log*

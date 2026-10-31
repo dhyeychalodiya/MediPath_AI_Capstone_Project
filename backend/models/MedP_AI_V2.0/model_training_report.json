@@ -1,0 +1,1755 @@
+{
+  "buildId": "MedP-AI-V2.0-20260917-120906",
+  "timestampUtc": "2026-09-17T12:09:06.214265+00:00",
+  "datasetSha256": "850b3637421ebe8f097044ba35ac9e8c297851bd2b7f4a4b04d6ceafb97544a6",
+  "selectedModel": "LogisticRegression_OvR",
+  "modelSelectionRationale": "Deployment & Engineering Trade-Off: In validation benchmarking, LinearSVC_Calibrated_OvR (Macro F1: 0.6763, Micro F1: 0.7933) achieved slightly higher raw ranking performance than LogisticRegression_OvR (Macro F1: 0.6226, Micro F1: 0.6808). However, LogisticRegression_OvR was selected as the deployed production model because it produces pure, closed-form independent sigmoid probabilities (P = 1 / (1 + e^-z)) with direct linear weight matrix export (W, b). This guarantees exact bit-level numerical parity between Python training and the Node.js serving runtime (delta < 1e-15), whereas multi-fold CalibratedClassifierCV requires non-parametric sigmoid piecewise calibrators that introduce runtime serving divergence.",
+  "totalTimeSeconds": 92.62,
+  "cleaningReport": {
+    "raw_row_count": 157036,
+    "retained_row_count": 104291,
+    "dropped_row_count": 52745,
+    "unique_raw_diseases_count": 2647,
+    "total_mapped_occurrences": 154451,
+    "total_excluded_occurrences": 44927,
+    "total_unmapped_occurrences": 113003,
+    "class_distribution": {
+      "Eczema / Atopic Dermatitis": 6577,
+      "Psoriasis": 6334,
+      "Common Cold / Upper Respiratory Infection": 6450,
+      "Allergic Rhinitis": 1845,
+      "Influenza": 6688,
+      "Gastritis": 1119,
+      "Peptic Ulcer Disease": 2497,
+      "Gastroenteritis": 4815,
+      "Gastroesophageal Reflux Disease / GERD": 1611,
+      "Irritable Bowel Syndrome / IBS": 2819,
+      "Urinary Tract Infection / UTI": 8596,
+      "Allergic Reaction / Urticaria": 4032,
+      "Depressive Symptoms": 7950,
+      "Migraine": 3283,
+      "Tension Headache": 964,
+      "Iron-Deficiency Anaemia": 493,
+      "Pneumonia": 6314,
+      "Bronchitis": 3174,
+      "Vertigo / BPPV": 179,
+      "Cervical Spondylosis": 1016,
+      "Kidney Stones": 3537,
+      "Hypothyroidism": 734,
+      "Anxiety Disorder": 4935,
+      "Osteoarthritis": 7179,
+      "Panic Attack / Panic Disorder": 1914,
+      "Muscle Strain / Sprain": 283,
+      "Cellulitis": 3102,
+      "Dental Abscess": 594,
+      "Conjunctivitis": 5155,
+      "Allergic Conjunctivitis": 3028,
+      "Frozen Shoulder": 217,
+      "Sciatica": 1362,
+      "Pelvic Inflammatory Disease / PID": 4729,
+      "Appendicitis": 4459,
+      "Carpal Tunnel Syndrome": 1564,
+      "Hemorrhoids": 1481,
+      "Asthma": 2281,
+      "Endometriosis": 4289,
+      "Uterine Fibroids": 1778,
+      "Stye / Chalazion": 494,
+      "Bacterial Vaginosis": 563,
+      "Vaginal Candidiasis / Yeast Infection": 467,
+      "Otitis Externa": 1875,
+      "Otitis Media": 5207,
+      "Tonsillitis": 918,
+      "Anal Fissure": 922,
+      "Contact Dermatitis": 850,
+      "Gingivitis / Periodontal Disease": 701,
+      "Seborrheic Dermatitis": 388,
+      "Pharyngitis / Strep Throat": 2814,
+      "Sinusitis": 3518,
+      "Blepharitis": 1442,
+      "Viral Warts": 759,
+      "Prostatitis": 1933,
+      "Benign Prostatic Hyperplasia / BPH": 1166,
+      "Acne": 1057
+    },
+    "top_unmapped_labels": {
+      "Heart Failure": 4486,
+      "Fibromyalgia": 3934,
+      "Parkinson's disease": 3614,
+      "Uveitis": 3167,
+      "Rheumatoid Arthritis": 3000,
+      "Inflammatory Bowel Disease": 2902,
+      "Multiple Sclerosis": 2866,
+      "Pericarditis": 2820,
+      "Pancreatitis": 2812,
+      "Spinal Stenosis": 2780,
+      "Inflammatory Bowel Disease (IBD)": 2416,
+      "Multiple sclerosis": 2162,
+      "Interstitial Cystitis": 2049,
+      "Angina": 1992,
+      "Parkinson's Disease": 1730,
+      "Miscarriage": 1565,
+      "Meniere's Disease": 1482,
+      "Epididymitis": 1374,
+      "Arrhythmia": 1343,
+      "Alcohol Use Disorder": 1342,
+      "Esophageal Spasm": 955,
+      "Esophageal Varices": 926,
+      "Lymphedema": 746,
+      "Atrial Fibrillation": 743,
+      "Laryngitis": 723,
+      "Peripheral Neuropathy": 710,
+      "Keratitis": 695,
+      "Mononucleosis": 686,
+      "Cholecystitis": 684,
+      "Glaucoma": 672,
+      "Thoracic Outlet Syndrome": 662,
+      "Diverticulitis": 647,
+      "Croup": 641,
+      "Tenosynovitis": 590,
+      "Cervical Radiculopathy": 581,
+      "COVID-19": 573,
+      "Vestibular Neuritis": 571,
+      "Pleurisy": 554,
+      "Myofascial Pain Syndrome": 548,
+      "Urinary retention": 533,
+      "Arthritis": 514,
+      "Meniere's disease": 508,
+      "Measles": 504,
+      "Peripheral Artery Disease": 504,
+      "Infectious Colitis": 496,
+      "Esophageal spasm": 489,
+      "Hydrocele": 488,
+      "Deep Vein Thrombosis": 487,
+      "Angina Pectoris": 464,
+      "Placenta Previa": 462
+    },
+    "top_100_unmapped_audit": [
+      {
+        "rank": 1,
+        "raw_condition": "Heart Failure",
+        "frequency": 4486,
+        "category": "Excluded: Chronic / Tertiary Specialist Care",
+        "clinical_rationale": "Complex systemic, autoimmune, or neurodegenerative disease requiring tertiary specialist consultation and long-term disease-modifying therapy.",
+        "proposed_system_action": "Tertiary Specialist Referral (Rheumatology/Neurology/Cardiology/Gastroenterology)"
+      },
+      {
+        "rank": 2,
+        "raw_condition": "Fibromyalgia",
+        "frequency": 3934,
+        "category": "Excluded: Chronic / Tertiary Specialist Care",
+        "clinical_rationale": "Complex systemic, autoimmune, or neurodegenerative disease requiring tertiary specialist consultation and long-term disease-modifying therapy.",
+        "proposed_system_action": "Tertiary Specialist Referral (Rheumatology/Neurology/Cardiology/Gastroenterology)"
+      },
+      {
+        "rank": 3,
+        "raw_condition": "Parkinson's disease",
+        "frequency": 3614,
+        "category": "Excluded: Chronic / Tertiary Specialist Care",
+        "clinical_rationale": "Complex systemic, autoimmune, or neurodegenerative disease requiring tertiary specialist consultation and long-term disease-modifying therapy.",
+        "proposed_system_action": "Tertiary Specialist Referral (Rheumatology/Neurology/Cardiology/Gastroenterology)"
+      },
+      {
+        "rank": 4,
+        "raw_condition": "Uveitis",
+        "frequency": 3167,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 5,
+        "raw_condition": "Rheumatoid Arthritis",
+        "frequency": 3000,
+        "category": "Excluded: Chronic / Tertiary Specialist Care",
+        "clinical_rationale": "Complex systemic, autoimmune, or neurodegenerative disease requiring tertiary specialist consultation and long-term disease-modifying therapy.",
+        "proposed_system_action": "Tertiary Specialist Referral (Rheumatology/Neurology/Cardiology/Gastroenterology)"
+      },
+      {
+        "rank": 6,
+        "raw_condition": "Inflammatory Bowel Disease",
+        "frequency": 2902,
+        "category": "Excluded: Chronic / Tertiary Specialist Care",
+        "clinical_rationale": "Complex systemic, autoimmune, or neurodegenerative disease requiring tertiary specialist consultation and long-term disease-modifying therapy.",
+        "proposed_system_action": "Tertiary Specialist Referral (Rheumatology/Neurology/Cardiology/Gastroenterology)"
+      },
+      {
+        "rank": 7,
+        "raw_condition": "Multiple Sclerosis",
+        "frequency": 2866,
+        "category": "Excluded: Chronic / Tertiary Specialist Care",
+        "clinical_rationale": "Complex systemic, autoimmune, or neurodegenerative disease requiring tertiary specialist consultation and long-term disease-modifying therapy.",
+        "proposed_system_action": "Tertiary Specialist Referral (Rheumatology/Neurology/Cardiology/Gastroenterology)"
+      },
+      {
+        "rank": 8,
+        "raw_condition": "Pericarditis",
+        "frequency": 2820,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 9,
+        "raw_condition": "Pancreatitis",
+        "frequency": 2812,
+        "category": "Excluded: Surgical / Subspecialty Outpatient",
+        "clinical_rationale": "Specialized surgical or organ-specific condition outside primary triage scope requiring direct specialist instrumentation.",
+        "proposed_system_action": "Subspecialist Outpatient Referral (Ophthalmology/ENT/Surgery/Urology)"
+      },
+      {
+        "rank": 10,
+        "raw_condition": "Spinal Stenosis",
+        "frequency": 2780,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 11,
+        "raw_condition": "Inflammatory Bowel Disease (IBD)",
+        "frequency": 2416,
+        "category": "Excluded: Chronic / Tertiary Specialist Care",
+        "clinical_rationale": "Complex systemic, autoimmune, or neurodegenerative disease requiring tertiary specialist consultation and long-term disease-modifying therapy.",
+        "proposed_system_action": "Tertiary Specialist Referral (Rheumatology/Neurology/Cardiology/Gastroenterology)"
+      },
+      {
+        "rank": 12,
+        "raw_condition": "Multiple sclerosis",
+        "frequency": 2162,
+        "category": "Excluded: Chronic / Tertiary Specialist Care",
+        "clinical_rationale": "Complex systemic, autoimmune, or neurodegenerative disease requiring tertiary specialist consultation and long-term disease-modifying therapy.",
+        "proposed_system_action": "Tertiary Specialist Referral (Rheumatology/Neurology/Cardiology/Gastroenterology)"
+      },
+      {
+        "rank": 13,
+        "raw_condition": "Interstitial Cystitis",
+        "frequency": 2049,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 14,
+        "raw_condition": "Angina",
+        "frequency": 1992,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 15,
+        "raw_condition": "Parkinson's Disease",
+        "frequency": 1730,
+        "category": "Excluded: Chronic / Tertiary Specialist Care",
+        "clinical_rationale": "Complex systemic, autoimmune, or neurodegenerative disease requiring tertiary specialist consultation and long-term disease-modifying therapy.",
+        "proposed_system_action": "Tertiary Specialist Referral (Rheumatology/Neurology/Cardiology/Gastroenterology)"
+      },
+      {
+        "rank": 16,
+        "raw_condition": "Miscarriage",
+        "frequency": 1565,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 17,
+        "raw_condition": "Meniere's Disease",
+        "frequency": 1482,
+        "category": "Excluded: Surgical / Subspecialty Outpatient",
+        "clinical_rationale": "Specialized surgical or organ-specific condition outside primary triage scope requiring direct specialist instrumentation.",
+        "proposed_system_action": "Subspecialist Outpatient Referral (Ophthalmology/ENT/Surgery/Urology)"
+      },
+      {
+        "rank": 18,
+        "raw_condition": "Epididymitis",
+        "frequency": 1374,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 19,
+        "raw_condition": "Arrhythmia",
+        "frequency": 1343,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 20,
+        "raw_condition": "Alcohol Use Disorder",
+        "frequency": 1342,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 21,
+        "raw_condition": "Esophageal Spasm",
+        "frequency": 955,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 22,
+        "raw_condition": "Esophageal Varices",
+        "frequency": 926,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 23,
+        "raw_condition": "Lymphedema",
+        "frequency": 746,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 24,
+        "raw_condition": "Atrial Fibrillation",
+        "frequency": 743,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 25,
+        "raw_condition": "Laryngitis",
+        "frequency": 723,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 26,
+        "raw_condition": "Peripheral Neuropathy",
+        "frequency": 710,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 27,
+        "raw_condition": "Keratitis",
+        "frequency": 695,
+        "category": "Excluded: Surgical / Subspecialty Outpatient",
+        "clinical_rationale": "Specialized surgical or organ-specific condition outside primary triage scope requiring direct specialist instrumentation.",
+        "proposed_system_action": "Subspecialist Outpatient Referral (Ophthalmology/ENT/Surgery/Urology)"
+      },
+      {
+        "rank": 28,
+        "raw_condition": "Mononucleosis",
+        "frequency": 686,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 29,
+        "raw_condition": "Cholecystitis",
+        "frequency": 684,
+        "category": "Excluded: Surgical / Subspecialty Outpatient",
+        "clinical_rationale": "Specialized surgical or organ-specific condition outside primary triage scope requiring direct specialist instrumentation.",
+        "proposed_system_action": "Subspecialist Outpatient Referral (Ophthalmology/ENT/Surgery/Urology)"
+      },
+      {
+        "rank": 30,
+        "raw_condition": "Glaucoma",
+        "frequency": 672,
+        "category": "Excluded: Surgical / Subspecialty Outpatient",
+        "clinical_rationale": "Specialized surgical or organ-specific condition outside primary triage scope requiring direct specialist instrumentation.",
+        "proposed_system_action": "Subspecialist Outpatient Referral (Ophthalmology/ENT/Surgery/Urology)"
+      },
+      {
+        "rank": 31,
+        "raw_condition": "Thoracic Outlet Syndrome",
+        "frequency": 662,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 32,
+        "raw_condition": "Diverticulitis",
+        "frequency": 647,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 33,
+        "raw_condition": "Croup",
+        "frequency": 641,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 34,
+        "raw_condition": "Tenosynovitis",
+        "frequency": 590,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 35,
+        "raw_condition": "Cervical Radiculopathy",
+        "frequency": 581,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 36,
+        "raw_condition": "COVID-19",
+        "frequency": 573,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 37,
+        "raw_condition": "Vestibular Neuritis",
+        "frequency": 571,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 38,
+        "raw_condition": "Pleurisy",
+        "frequency": 554,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 39,
+        "raw_condition": "Myofascial Pain Syndrome",
+        "frequency": 548,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 40,
+        "raw_condition": "Urinary retention",
+        "frequency": 533,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 41,
+        "raw_condition": "Arthritis",
+        "frequency": 514,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 42,
+        "raw_condition": "Meniere's disease",
+        "frequency": 508,
+        "category": "Excluded: Surgical / Subspecialty Outpatient",
+        "clinical_rationale": "Specialized surgical or organ-specific condition outside primary triage scope requiring direct specialist instrumentation.",
+        "proposed_system_action": "Subspecialist Outpatient Referral (Ophthalmology/ENT/Surgery/Urology)"
+      },
+      {
+        "rank": 43,
+        "raw_condition": "Measles",
+        "frequency": 504,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 44,
+        "raw_condition": "Peripheral Artery Disease",
+        "frequency": 504,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 45,
+        "raw_condition": "Infectious Colitis",
+        "frequency": 496,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 46,
+        "raw_condition": "Esophageal spasm",
+        "frequency": 489,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 47,
+        "raw_condition": "Hydrocele",
+        "frequency": 488,
+        "category": "Excluded: Surgical / Subspecialty Outpatient",
+        "clinical_rationale": "Specialized surgical or organ-specific condition outside primary triage scope requiring direct specialist instrumentation.",
+        "proposed_system_action": "Subspecialist Outpatient Referral (Ophthalmology/ENT/Surgery/Urology)"
+      },
+      {
+        "rank": 48,
+        "raw_condition": "Deep Vein Thrombosis",
+        "frequency": 487,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 49,
+        "raw_condition": "Angina Pectoris",
+        "frequency": 464,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 50,
+        "raw_condition": "Placenta Previa",
+        "frequency": 462,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 51,
+        "raw_condition": "Costochondritis",
+        "frequency": 462,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 52,
+        "raw_condition": "Atrial fibrillation",
+        "frequency": 457,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 53,
+        "raw_condition": "Angina pectoris",
+        "frequency": 456,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 54,
+        "raw_condition": "Vaginal Yeast Infection",
+        "frequency": 423,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 55,
+        "raw_condition": "Heart Attack",
+        "frequency": 422,
+        "category": "Excluded: Medical Emergency",
+        "clinical_rationale": "Acute life-threatening presentation requiring immediate emergency medical resuscitation and hospital admission.",
+        "proposed_system_action": "Emergency Resuscitation Alert (112/108 override)"
+      },
+      {
+        "rank": 56,
+        "raw_condition": "Tuberculosis",
+        "frequency": 418,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 57,
+        "raw_condition": "Bronchiolitis",
+        "frequency": 408,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 58,
+        "raw_condition": "Gout",
+        "frequency": 395,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 59,
+        "raw_condition": "heart failure",
+        "frequency": 390,
+        "category": "Excluded: Chronic / Tertiary Specialist Care",
+        "clinical_rationale": "Complex systemic, autoimmune, or neurodegenerative disease requiring tertiary specialist consultation and long-term disease-modifying therapy.",
+        "proposed_system_action": "Tertiary Specialist Referral (Rheumatology/Neurology/Cardiology/Gastroenterology)"
+      },
+      {
+        "rank": 60,
+        "raw_condition": "Lipoma",
+        "frequency": 386,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 61,
+        "raw_condition": "Cardiac Arrhythmia",
+        "frequency": 368,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 62,
+        "raw_condition": "Esophageal rupture",
+        "frequency": 367,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 63,
+        "raw_condition": "Temporomandibular Joint Disorder (TMJ)",
+        "frequency": 355,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 64,
+        "raw_condition": "Sleep Apnea",
+        "frequency": 348,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 65,
+        "raw_condition": "lichen planus",
+        "frequency": 339,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 66,
+        "raw_condition": "Hemorrhagic Ulcer Disease",
+        "frequency": 331,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 67,
+        "raw_condition": "Strabismus",
+        "frequency": 328,
+        "category": "Excluded: Surgical / Subspecialty Outpatient",
+        "clinical_rationale": "Specialized surgical or organ-specific condition outside primary triage scope requiring direct specialist instrumentation.",
+        "proposed_system_action": "Subspecialist Outpatient Referral (Ophthalmology/ENT/Surgery/Urology)"
+      },
+      {
+        "rank": 68,
+        "raw_condition": "Herniated Disc",
+        "frequency": 318,
+        "category": "Excluded: Surgical / Subspecialty Outpatient",
+        "clinical_rationale": "Specialized surgical or organ-specific condition outside primary triage scope requiring direct specialist instrumentation.",
+        "proposed_system_action": "Subspecialist Outpatient Referral (Ophthalmology/ENT/Surgery/Urology)"
+      },
+      {
+        "rank": 69,
+        "raw_condition": "Antisocial Personality Disorder",
+        "frequency": 317,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 70,
+        "raw_condition": "Alcoholic Psychosis",
+        "frequency": 299,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 71,
+        "raw_condition": "Infection",
+        "frequency": 298,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 72,
+        "raw_condition": "Lumbar Spinal Stenosis",
+        "frequency": 298,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 73,
+        "raw_condition": "Achalasia",
+        "frequency": 297,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 74,
+        "raw_condition": "Alopecia Areata",
+        "frequency": 280,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 75,
+        "raw_condition": "Lichen Planus",
+        "frequency": 279,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 76,
+        "raw_condition": "Transient Ischemic Attack (TIA)",
+        "frequency": 272,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 77,
+        "raw_condition": "Kidney Infection (Pyelonephritis)",
+        "frequency": 271,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 78,
+        "raw_condition": "Optic Neuritis",
+        "frequency": 268,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 79,
+        "raw_condition": "Borderline Personality Disorder",
+        "frequency": 268,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 80,
+        "raw_condition": "Labyrinthitis",
+        "frequency": 267,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 81,
+        "raw_condition": "Cirrhosis",
+        "frequency": 262,
+        "category": "Excluded: Chronic / Tertiary Specialist Care",
+        "clinical_rationale": "Complex systemic, autoimmune, or neurodegenerative disease requiring tertiary specialist consultation and long-term disease-modifying therapy.",
+        "proposed_system_action": "Tertiary Specialist Referral (Rheumatology/Neurology/Cardiology/Gastroenterology)"
+      },
+      {
+        "rank": 82,
+        "raw_condition": "Vaginitis",
+        "frequency": 257,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 83,
+        "raw_condition": "Tendonitis",
+        "frequency": 257,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 84,
+        "raw_condition": "Alcoholic Hepatitis",
+        "frequency": 257,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 85,
+        "raw_condition": "Hand",
+        "frequency": 256,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 86,
+        "raw_condition": "Scarlet Fever",
+        "frequency": 250,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 87,
+        "raw_condition": "Iritis",
+        "frequency": 250,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 88,
+        "raw_condition": "Deep Vein Thrombosis (DVT)",
+        "frequency": 247,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 89,
+        "raw_condition": "Polycystic Ovary Syndrome (PCOS)",
+        "frequency": 247,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 90,
+        "raw_condition": "Ulcerative Colitis",
+        "frequency": 247,
+        "category": "Excluded: Chronic / Tertiary Specialist Care",
+        "clinical_rationale": "Complex systemic, autoimmune, or neurodegenerative disease requiring tertiary specialist consultation and long-term disease-modifying therapy.",
+        "proposed_system_action": "Tertiary Specialist Referral (Rheumatology/Neurology/Cardiology/Gastroenterology)"
+      },
+      {
+        "rank": 91,
+        "raw_condition": "Foot",
+        "frequency": 245,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 92,
+        "raw_condition": "and Mouth Disease",
+        "frequency": 243,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 93,
+        "raw_condition": "Complex Regional Pain Syndrome (CRPS)",
+        "frequency": 242,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 94,
+        "raw_condition": "Hepatitis",
+        "frequency": 228,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 95,
+        "raw_condition": "Epiglottitis",
+        "frequency": 226,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 96,
+        "raw_condition": "Adenomyosis",
+        "frequency": 224,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 97,
+        "raw_condition": "Chronic Obstructive Pulmonary Disease (COPD)",
+        "frequency": 221,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 98,
+        "raw_condition": "Epilepsy",
+        "frequency": 216,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 99,
+        "raw_condition": "Esophageal varices",
+        "frequency": 210,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      },
+      {
+        "rank": 100,
+        "raw_condition": "Infection (e.g.",
+        "frequency": 210,
+        "category": "Out of Scope / Requires Clinical Review",
+        "clinical_rationale": "Rare, atypical, or unmapped condition variant not present in the 56 canonical primary-care classification taxonomy.",
+        "proposed_system_action": "General Physician Consultation for Comprehensive Clinical Workup"
+      }
+    ]
+  },
+  "splitInfo": {
+    "train_records": 72741,
+    "val_records": 15786,
+    "test_records": 15764,
+    "train_groups": 70088,
+    "val_groups": 15530,
+    "test_groups": 15519,
+    "signature_overlap_train_val": 0,
+    "signature_overlap_train_test": 0,
+    "signature_overlap_val_test": 0,
+    "min_val_support": 60,
+    "min_test_support": 61,
+    "class_support": [
+      {
+        "class_index": 0,
+        "condition": "Acne",
+        "total": 1057,
+        "train_support": 740,
+        "val_support": 159,
+        "test_support": 158,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 1,
+        "condition": "Allergic Conjunctivitis",
+        "total": 3028,
+        "train_support": 2120,
+        "val_support": 454,
+        "test_support": 454,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 2,
+        "condition": "Allergic Reaction / Urticaria",
+        "total": 4032,
+        "train_support": 2822,
+        "val_support": 605,
+        "test_support": 605,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 3,
+        "condition": "Allergic Rhinitis",
+        "total": 1845,
+        "train_support": 1292,
+        "val_support": 277,
+        "test_support": 276,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 4,
+        "condition": "Anal Fissure",
+        "total": 922,
+        "train_support": 649,
+        "val_support": 137,
+        "test_support": 136,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 5,
+        "condition": "Anxiety Disorder",
+        "total": 4935,
+        "train_support": 3455,
+        "val_support": 740,
+        "test_support": 740,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 6,
+        "condition": "Appendicitis",
+        "total": 4459,
+        "train_support": 3121,
+        "val_support": 669,
+        "test_support": 669,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 7,
+        "condition": "Asthma",
+        "total": 2281,
+        "train_support": 1597,
+        "val_support": 342,
+        "test_support": 342,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 8,
+        "condition": "Bacterial Vaginosis",
+        "total": 563,
+        "train_support": 394,
+        "val_support": 84,
+        "test_support": 85,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 9,
+        "condition": "Benign Prostatic Hyperplasia / BPH",
+        "total": 1166,
+        "train_support": 816,
+        "val_support": 175,
+        "test_support": 175,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 10,
+        "condition": "Blepharitis",
+        "total": 1442,
+        "train_support": 1014,
+        "val_support": 214,
+        "test_support": 214,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 11,
+        "condition": "Bronchitis",
+        "total": 3174,
+        "train_support": 2222,
+        "val_support": 476,
+        "test_support": 476,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 12,
+        "condition": "Carpal Tunnel Syndrome",
+        "total": 1564,
+        "train_support": 1094,
+        "val_support": 235,
+        "test_support": 235,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 13,
+        "condition": "Cellulitis",
+        "total": 3102,
+        "train_support": 2172,
+        "val_support": 465,
+        "test_support": 465,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 14,
+        "condition": "Cervical Spondylosis",
+        "total": 1016,
+        "train_support": 712,
+        "val_support": 152,
+        "test_support": 152,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 15,
+        "condition": "Common Cold / Upper Respiratory Infection",
+        "total": 6450,
+        "train_support": 4515,
+        "val_support": 968,
+        "test_support": 967,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 16,
+        "condition": "Conjunctivitis",
+        "total": 5155,
+        "train_support": 3609,
+        "val_support": 773,
+        "test_support": 773,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 17,
+        "condition": "Contact Dermatitis",
+        "total": 850,
+        "train_support": 598,
+        "val_support": 126,
+        "test_support": 126,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 18,
+        "condition": "Dental Abscess",
+        "total": 594,
+        "train_support": 243,
+        "val_support": 175,
+        "test_support": 176,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 19,
+        "condition": "Depressive Symptoms",
+        "total": 7950,
+        "train_support": 5565,
+        "val_support": 1193,
+        "test_support": 1192,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 20,
+        "condition": "Eczema / Atopic Dermatitis",
+        "total": 6577,
+        "train_support": 4604,
+        "val_support": 987,
+        "test_support": 986,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 21,
+        "condition": "Endometriosis",
+        "total": 4289,
+        "train_support": 3003,
+        "val_support": 643,
+        "test_support": 643,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 22,
+        "condition": "Frozen Shoulder",
+        "total": 217,
+        "train_support": 77,
+        "val_support": 71,
+        "test_support": 69,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 23,
+        "condition": "Gastritis",
+        "total": 1119,
+        "train_support": 778,
+        "val_support": 171,
+        "test_support": 170,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 24,
+        "condition": "Gastroenteritis",
+        "total": 4815,
+        "train_support": 3371,
+        "val_support": 722,
+        "test_support": 722,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 25,
+        "condition": "Gastroesophageal Reflux Disease / GERD",
+        "total": 1611,
+        "train_support": 1127,
+        "val_support": 242,
+        "test_support": 242,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 26,
+        "condition": "Gingivitis / Periodontal Disease",
+        "total": 701,
+        "train_support": 491,
+        "val_support": 105,
+        "test_support": 105,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 27,
+        "condition": "Hemorrhoids",
+        "total": 1481,
+        "train_support": 1037,
+        "val_support": 222,
+        "test_support": 222,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 28,
+        "condition": "Hypothyroidism",
+        "total": 734,
+        "train_support": 514,
+        "val_support": 110,
+        "test_support": 110,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 29,
+        "condition": "Influenza",
+        "total": 6688,
+        "train_support": 4682,
+        "val_support": 1003,
+        "test_support": 1003,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 30,
+        "condition": "Iron-Deficiency Anaemia",
+        "total": 493,
+        "train_support": 259,
+        "val_support": 117,
+        "test_support": 117,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 31,
+        "condition": "Irritable Bowel Syndrome / IBS",
+        "total": 2819,
+        "train_support": 1973,
+        "val_support": 423,
+        "test_support": 423,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 32,
+        "condition": "Kidney Stones",
+        "total": 3537,
+        "train_support": 2475,
+        "val_support": 531,
+        "test_support": 531,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 33,
+        "condition": "Migraine",
+        "total": 3283,
+        "train_support": 2298,
+        "val_support": 492,
+        "test_support": 493,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 34,
+        "condition": "Muscle Strain / Sprain",
+        "total": 283,
+        "train_support": 162,
+        "val_support": 60,
+        "test_support": 61,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 35,
+        "condition": "Osteoarthritis",
+        "total": 7179,
+        "train_support": 5025,
+        "val_support": 1077,
+        "test_support": 1077,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 36,
+        "condition": "Otitis Externa",
+        "total": 1875,
+        "train_support": 1313,
+        "val_support": 281,
+        "test_support": 281,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 37,
+        "condition": "Otitis Media",
+        "total": 5207,
+        "train_support": 3645,
+        "val_support": 781,
+        "test_support": 781,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 38,
+        "condition": "Panic Attack / Panic Disorder",
+        "total": 1914,
+        "train_support": 1340,
+        "val_support": 287,
+        "test_support": 287,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 39,
+        "condition": "Pelvic Inflammatory Disease / PID",
+        "total": 4729,
+        "train_support": 3311,
+        "val_support": 709,
+        "test_support": 709,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 40,
+        "condition": "Peptic Ulcer Disease",
+        "total": 2497,
+        "train_support": 1749,
+        "val_support": 374,
+        "test_support": 374,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 41,
+        "condition": "Pharyngitis / Strep Throat",
+        "total": 2814,
+        "train_support": 1970,
+        "val_support": 422,
+        "test_support": 422,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 42,
+        "condition": "Pneumonia",
+        "total": 6314,
+        "train_support": 4420,
+        "val_support": 947,
+        "test_support": 947,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 43,
+        "condition": "Prostatitis",
+        "total": 1933,
+        "train_support": 1353,
+        "val_support": 290,
+        "test_support": 290,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 44,
+        "condition": "Psoriasis",
+        "total": 6334,
+        "train_support": 4434,
+        "val_support": 950,
+        "test_support": 950,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 45,
+        "condition": "Sciatica",
+        "total": 1362,
+        "train_support": 954,
+        "val_support": 204,
+        "test_support": 204,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 46,
+        "condition": "Seborrheic Dermatitis",
+        "total": 388,
+        "train_support": 208,
+        "val_support": 90,
+        "test_support": 90,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 47,
+        "condition": "Sinusitis",
+        "total": 3518,
+        "train_support": 2462,
+        "val_support": 528,
+        "test_support": 528,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 48,
+        "condition": "Stye / Chalazion",
+        "total": 494,
+        "train_support": 219,
+        "val_support": 138,
+        "test_support": 137,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 49,
+        "condition": "Tension Headache",
+        "total": 964,
+        "train_support": 674,
+        "val_support": 145,
+        "test_support": 145,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 50,
+        "condition": "Tonsillitis",
+        "total": 918,
+        "train_support": 643,
+        "val_support": 138,
+        "test_support": 137,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 51,
+        "condition": "Urinary Tract Infection / UTI",
+        "total": 8596,
+        "train_support": 6018,
+        "val_support": 1289,
+        "test_support": 1289,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 52,
+        "condition": "Uterine Fibroids",
+        "total": 1778,
+        "train_support": 1244,
+        "val_support": 267,
+        "test_support": 267,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 53,
+        "condition": "Vaginal Candidiasis / Yeast Infection",
+        "total": 467,
+        "train_support": 197,
+        "val_support": 135,
+        "test_support": 135,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 54,
+        "condition": "Vertigo / BPPV",
+        "total": 179,
+        "train_support": 55,
+        "val_support": 62,
+        "test_support": 62,
+        "target_met_val": true,
+        "target_met_test": true
+      },
+      {
+        "class_index": 55,
+        "condition": "Viral Warts",
+        "total": 759,
+        "train_support": 530,
+        "val_support": 115,
+        "test_support": 114,
+        "target_met_val": true,
+        "target_met_test": true
+      }
+    ]
+  },
+  "benchmarkResults": [
+    {
+      "micro_precision": 0.5231,
+      "micro_recall": 0.9749,
+      "micro_f1": 0.6808,
+      "macro_precision": 0.4764,
+      "macro_recall": 0.9598,
+      "macro_f1": 0.6226,
+      "weighted_f1": 0.7092,
+      "hamming_loss": 0.02434,
+      "lrap": 0.9179,
+      "exact_match_ratio": 0.2397,
+      "top1_hit_rate": 0.8845,
+      "top3_hit_rate": 0.9895,
+      "top5_hit_rate": 0.9978,
+      "precision_at_1": 0.8845,
+      "precision_at_3": 0.4766,
+      "precision_at_5": 0.2956,
+      "recall_at_1": 0.6581,
+      "recall_at_3": 0.965,
+      "recall_at_5": 0.9921,
+      "brier_score": 0.01827,
+      "ece": 0.0283,
+      "model": "LogisticRegression_OvR",
+      "fit_time_s": 4.83
+    },
+    {
+      "micro_precision": 0.8806,
+      "micro_recall": 0.6201,
+      "micro_f1": 0.7277,
+      "macro_precision": 0.7975,
+      "macro_recall": 0.4452,
+      "macro_f1": 0.5297,
+      "weighted_f1": 0.6966,
+      "hamming_loss": 0.01236,
+      "lrap": 0.8911,
+      "exact_match_ratio": 0.4925,
+      "top1_hit_rate": 0.8515,
+      "top3_hit_rate": 0.9746,
+      "top5_hit_rate": 0.9921,
+      "precision_at_1": 0.8515,
+      "precision_at_3": 0.4624,
+      "precision_at_5": 0.2919,
+      "recall_at_1": 0.6315,
+      "recall_at_3": 0.938,
+      "recall_at_5": 0.9806,
+      "brier_score": 0.00908,
+      "ece": 0.0086,
+      "model": "SGD_LogLoss_OvR",
+      "fit_time_s": 0.85
+    },
+    {
+      "micro_precision": 0.8862,
+      "micro_recall": 0.7181,
+      "micro_f1": 0.7933,
+      "macro_precision": 0.8817,
+      "macro_recall": 0.5943,
+      "macro_f1": 0.6763,
+      "weighted_f1": 0.7761,
+      "hamming_loss": 0.00997,
+      "lrap": 0.9151,
+      "exact_match_ratio": 0.5843,
+      "top1_hit_rate": 0.8886,
+      "top3_hit_rate": 0.9849,
+      "top5_hit_rate": 0.9949,
+      "precision_at_1": 0.8886,
+      "precision_at_3": 0.4705,
+      "precision_at_5": 0.2926,
+      "recall_at_1": 0.6621,
+      "recall_at_3": 0.9543,
+      "recall_at_5": 0.9835,
+      "brier_score": 0.00732,
+      "ece": 0.0044,
+      "model": "LinearSVC_Calibrated_OvR",
+      "fit_time_s": 5.77
+    },
+    {
+      "micro_precision": 0.4242,
+      "micro_recall": 0.9348,
+      "micro_f1": 0.5836,
+      "macro_precision": 0.3968,
+      "macro_recall": 0.901,
+      "macro_f1": 0.5287,
+      "weighted_f1": 0.623,
+      "hamming_loss": 0.03554,
+      "lrap": 0.8546,
+      "exact_match_ratio": 0.1161,
+      "top1_hit_rate": 0.7946,
+      "top3_hit_rate": 0.9646,
+      "top5_hit_rate": 0.9896,
+      "precision_at_1": 0.7946,
+      "precision_at_3": 0.4527,
+      "precision_at_5": 0.2901,
+      "recall_at_1": 0.5838,
+      "recall_at_3": 0.9199,
+      "recall_at_5": 0.975,
+      "brier_score": 0.02948,
+      "ece": 0.033,
+      "model": "MultinomialNB_OvR",
+      "fit_time_s": 0.55
+    }
+  ],
+  "testMetrics": {
+    "micro_precision": 0.6922,
+    "micro_recall": 0.9032,
+    "micro_f1": 0.7837,
+    "macro_precision": 0.6241,
+    "macro_recall": 0.8796,
+    "macro_f1": 0.7199,
+    "weighted_f1": 0.7959,
+    "hamming_loss": 0.01329,
+    "lrap": 0.916,
+    "exact_match_ratio": 0.4732,
+    "top1_hit_rate": 0.8819,
+    "top3_hit_rate": 0.9903,
+    "top5_hit_rate": 0.998,
+    "precision_at_1": 0.8819,
+    "precision_at_3": 0.4766,
+    "precision_at_5": 0.2957,
+    "recall_at_1": 0.6551,
+    "recall_at_3": 0.9642,
+    "recall_at_5": 0.9917,
+    "brier_score": 0.01827,
+    "ece": 0.0282
+  },
+  "top5Classes": [
+    {
+      "condition": "Depressive Symptoms",
+      "f1": 0.9394,
+      "support": 1192,
+      "precision": 0.9231,
+      "recall": 0.9564
+    },
+    {
+      "condition": "Osteoarthritis",
+      "f1": 0.9387,
+      "support": 1077,
+      "precision": 0.9252,
+      "recall": 0.9526
+    },
+    {
+      "condition": "Endometriosis",
+      "f1": 0.9038,
+      "support": 643,
+      "precision": 0.8618,
+      "recall": 0.9502
+    },
+    {
+      "condition": "Otitis Media",
+      "f1": 0.9016,
+      "support": 781,
+      "precision": 0.8578,
+      "recall": 0.9501
+    },
+    {
+      "condition": "Pneumonia",
+      "f1": 0.8983,
+      "support": 947,
+      "precision": 0.8749,
+      "recall": 0.9229
+    }
+  ],
+  "worst5Classes": [
+    {
+      "condition": "Blepharitis",
+      "f1": 0.562,
+      "support": 214,
+      "precision": 0.3984,
+      "recall": 0.9533
+    },
+    {
+      "condition": "Tension Headache",
+      "f1": 0.5164,
+      "support": 145,
+      "precision": 0.3782,
+      "recall": 0.8138
+    },
+    {
+      "condition": "Muscle Strain / Sprain",
+      "f1": 0.4386,
+      "support": 61,
+      "precision": 0.2994,
+      "recall": 0.8197
+    },
+    {
+      "condition": "Contact Dermatitis",
+      "f1": 0.3801,
+      "support": 126,
+      "precision": 0.2476,
+      "recall": 0.8175
+    },
+    {
+      "condition": "Vertigo / BPPV",
+      "f1": 0.3433,
+      "support": 62,
+      "precision": 0.3194,
+      "recall": 0.371
+    }
+  ],
+  "topConfusedPairs": [
+    {
+      "true": "Pelvic Inflammatory Disease / PID",
+      "predicted": "Uterine Fibroids",
+      "count": 26
+    },
+    {
+      "true": "Common Cold / Upper Respiratory Infection",
+      "predicted": "Sinusitis",
+      "count": 23
+    },
+    {
+      "true": "Sinusitis",
+      "predicted": "Gingivitis / Periodontal Disease",
+      "count": 23
+    },
+    {
+      "true": "Influenza",
+      "predicted": "Bronchitis",
+      "count": 21
+    },
+    {
+      "true": "Asthma",
+      "predicted": "Bronchitis",
+      "count": 19
+    },
+    {
+      "true": "Bronchitis",
+      "predicted": "Influenza",
+      "count": 19
+    },
+    {
+      "true": "Osteoarthritis",
+      "predicted": "Carpal Tunnel Syndrome",
+      "count": 18
+    },
+    {
+      "true": "Influenza",
+      "predicted": "Sinusitis",
+      "count": 17
+    },
+    {
+      "true": "Influenza",
+      "predicted": "Allergic Rhinitis",
+      "count": 17
+    },
+    {
+      "true": "Influenza",
+      "predicted": "Pharyngitis / Strep Throat",
+      "count": 16
+    }
+  ]
+}

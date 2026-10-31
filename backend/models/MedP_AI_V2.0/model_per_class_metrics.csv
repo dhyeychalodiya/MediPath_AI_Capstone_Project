@@ -1,0 +1,57 @@
+class_index,condition,specialization,threshold,support,tp,fp,fn,tn,precision,recall,f1,mean_positive_prob
+0,Acne,Dermatology,0.85,158,155,140,3,15466,0.5254,0.981,0.6843,0.9781
+1,Allergic Conjunctivitis,Ophthalmology,0.83,454,421,215,33,15095,0.6619,0.9273,0.7725,0.9548
+2,Allergic Reaction / Urticaria,General Medicine,0.85,605,532,188,73,14971,0.7389,0.8793,0.803,0.9275
+3,Allergic Rhinitis,ENT,0.85,276,222,240,54,15248,0.4805,0.8043,0.6016,0.9012
+4,Anal Fissure,General Surgery,0.85,136,130,78,6,15550,0.625,0.9559,0.7558,0.9729
+5,Anxiety Disorder,Psychiatry,0.85,740,684,206,56,14818,0.7685,0.9243,0.8393,0.9537
+6,Appendicitis,General Surgery,0.85,669,591,254,78,14841,0.6994,0.8834,0.7807,0.9323
+7,Asthma,Pulmonology,0.85,342,289,212,53,15210,0.5768,0.845,0.6856,0.9229
+8,Bacterial Vaginosis,Gynecology,0.85,85,83,113,2,15566,0.4235,0.9765,0.5907,0.981
+9,Benign Prostatic Hyperplasia / BPH,Urology,0.83,175,169,71,6,15518,0.7042,0.9657,0.8145,0.977
+10,Blepharitis,Ophthalmology,0.85,214,204,308,10,15242,0.3984,0.9533,0.562,0.9563
+11,Bronchitis,Pulmonology,0.85,476,399,363,77,14925,0.5236,0.8382,0.6446,0.9145
+12,Carpal Tunnel Syndrome,Orthopedics,0.85,235,215,104,20,15425,0.674,0.9149,0.7762,0.9599
+13,Cellulitis,General Medicine,0.85,465,416,174,49,15125,0.7051,0.8946,0.7886,0.9438
+14,Cervical Spondylosis,Orthopedics,0.85,152,137,180,15,15432,0.4322,0.9013,0.5842,0.9523
+15,Common Cold / Upper Respiratory Infection,General Medicine,0.85,967,843,249,124,14548,0.772,0.8718,0.8188,0.9313
+16,Conjunctivitis,Ophthalmology,0.85,773,744,216,29,14775,0.775,0.9625,0.8586,0.9702
+17,Contact Dermatitis,Dermatology,0.85,126,103,313,23,15325,0.2476,0.8175,0.3801,0.8804
+18,Dental Abscess,Dentistry,0.83,176,153,107,23,15481,0.5885,0.8693,0.7018,0.9057
+19,Depressive Symptoms,Psychiatry,0.85,1192,1140,95,52,14477,0.9231,0.9564,0.9394,0.9721
+20,Eczema / Atopic Dermatitis,Dermatology,0.83,986,925,283,61,14495,0.7657,0.9381,0.8432,0.9552
+21,Endometriosis,Gynecology,0.85,643,611,98,32,15023,0.8618,0.9502,0.9038,0.9722
+22,Frozen Shoulder,Orthopedics,0.85,69,63,25,6,15670,0.7159,0.913,0.8025,0.9405
+23,Gastritis,Gastroenterology,0.85,170,148,206,22,15388,0.4181,0.8706,0.5649,0.9232
+24,Gastroenteritis,Gastroenterology,0.85,722,631,281,91,14761,0.6919,0.874,0.7723,0.9263
+25,Gastroesophageal Reflux Disease / GERD,Gastroenterology,0.83,242,209,126,33,15396,0.6239,0.8636,0.7244,0.9298
+26,Gingivitis / Periodontal Disease,Dentistry,0.85,105,98,137,7,15522,0.417,0.9333,0.5765,0.9547
+27,Hemorrhoids,General Surgery,0.85,222,204,83,18,15459,0.7108,0.9189,0.8016,0.9557
+28,Hypothyroidism,Endocrinology,0.85,110,68,29,42,15625,0.701,0.6182,0.657,0.7492
+29,Influenza,General Medicine,0.85,1003,872,264,131,14497,0.7676,0.8694,0.8153,0.9306
+30,Iron-Deficiency Anaemia,Hematology,0.85,117,93,79,24,15568,0.5407,0.7949,0.6436,0.8758
+31,Irritable Bowel Syndrome / IBS,Gastroenterology,0.85,423,354,278,69,15063,0.5601,0.8369,0.6711,0.9158
+32,Kidney Stones,Urology,0.85,531,466,221,65,15012,0.6783,0.8776,0.7652,0.9298
+33,Migraine,Neurology,0.85,493,450,129,43,15142,0.7772,0.9128,0.8396,0.9438
+34,Muscle Strain / Sprain,Orthopedics,0.85,61,50,117,11,15586,0.2994,0.8197,0.4386,0.8855
+35,Osteoarthritis,Orthopedics,0.85,1077,1026,83,51,14604,0.9252,0.9526,0.9387,0.9711
+36,Otitis Externa,ENT,0.85,281,262,114,19,15369,0.6968,0.9324,0.7976,0.9645
+37,Otitis Media,ENT,0.85,781,742,123,39,14860,0.8578,0.9501,0.9016,0.9708
+38,Panic Attack / Panic Disorder,Psychiatry,0.85,287,262,165,25,15312,0.6136,0.9129,0.7339,0.9523
+39,Pelvic Inflammatory Disease / PID,Gynecology,0.85,709,630,244,79,14811,0.7208,0.8886,0.796,0.9461
+40,Peptic Ulcer Disease,Gastroenterology,0.85,374,338,226,36,15164,0.5993,0.9037,0.7207,0.9369
+41,Pharyngitis / Strep Throat,ENT,0.85,422,368,274,54,15068,0.5732,0.872,0.6917,0.925
+42,Pneumonia,Pulmonology,0.85,947,874,125,73,14692,0.8749,0.9229,0.8983,0.9579
+43,Prostatitis,Urology,0.83,290,275,114,15,15360,0.7069,0.9483,0.81,0.9676
+44,Psoriasis,Dermatology,0.85,950,889,250,61,14564,0.7805,0.9358,0.8511,0.9602
+45,Sciatica,Orthopedics,0.85,204,183,120,21,15440,0.604,0.8971,0.7219,0.9359
+46,Seborrheic Dermatitis,Dermatology,0.85,90,83,88,7,15586,0.4854,0.9222,0.636,0.9563
+47,Sinusitis,ENT,0.85,528,440,289,88,14947,0.6036,0.8333,0.7001,0.9058
+48,Stye / Chalazion,Ophthalmology,0.85,137,103,67,34,15560,0.6059,0.7518,0.671,0.7974
+49,Tension Headache,Neurology,0.85,145,118,194,27,15425,0.3782,0.8138,0.5164,0.8976
+50,Tonsillitis,ENT,0.85,137,112,148,25,15479,0.4308,0.8175,0.5642,0.9023
+51,Urinary Tract Infection / UTI,Urology,0.81,1289,1203,190,86,14285,0.8636,0.9333,0.8971,0.9583
+52,Uterine Fibroids,Gynecology,0.85,267,253,188,14,15309,0.5737,0.9476,0.7147,0.9666
+53,Vaginal Candidiasis / Yeast Infection,Gynecology,0.79,135,112,105,23,15524,0.5161,0.8296,0.6364,0.8836
+54,Vertigo / BPPV,Neurology,0.85,62,23,49,39,15653,0.3194,0.371,0.3433,0.588
+55,Viral Warts,Dermatology,0.83,114,92,115,22,15535,0.4444,0.807,0.5732,0.9036
