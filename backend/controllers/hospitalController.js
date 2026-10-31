@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const Fuse = require('fuse.js');
 const XLSX = require('xlsx');
-const { predictConditions, getFollowUpQuestions, loadModel, getSpecializationTerms } = require('../models/symptomModel');
+const { predictConditions, getFollowUpQuestions, loadModel, getSpecializationTerms, EMERGENCY_WARNING_PATTERNS } = require('../models/symptomModel');
 const { hasLiveProvider, searchGooglePlaces, searchOpenStreetMap, GoogleQuotaError, getGooglePlacesUsage, resetGooglePlacesUsage, markGoogleQuotaHit } = require('../services/hospitalProvider');
 const { isConfigured: isGeminiConfigured, normalizeSymptoms, recommendHospitals } = require('../services/geminiProvider');
 
@@ -468,7 +468,46 @@ exports.searchHospitals = async (req, res) => {
     let predictions = [];
     const isDirectRouting = req.query.directRouting === 'true';
 
-    if (req.query.confirmedCondition) {
+    // Tier 2 Emergency Red-Flag Shield (<50ms Immediate Override for Hospital Matching)
+    // Check if query or confirmed condition matches any Tier 2 Emergency Warning Patterns
+    const condParam = String(req.query.confirmedCondition || '').toLowerCase().trim();
+    const queryParam = String(normalizedQuery || query || '').toLowerCase().trim();
+    const emergencyMatch = (Array.isArray(EMERGENCY_WARNING_PATTERNS) ? EMERGENCY_WARNING_PATTERNS : []).find(ep => {
+      if (condParam) {
+        if (ep.regex.test(condParam)) return true;
+        const lowerCond = ep.condition.toLowerCase();
+        if (condParam.includes(lowerCond) || lowerCond.includes(condParam)) return true;
+      }
+      if (req.query.isEmergency === 'true' && condParam) {
+        const lowerCond = ep.condition.toLowerCase();
+        return condParam.includes(lowerCond) || lowerCond.includes(condParam);
+      }
+      if (!req.query.confirmedCondition && queryParam) {
+        return ep.regex.test(queryParam);
+      }
+      return false;
+    });
+
+    if (emergencyMatch) {
+      topPrediction = {
+        condition_id: emergencyMatch.condition_id || 'acute_medical_emergency',
+        condition: emergencyMatch.condition,
+        specialization: emergencyMatch.specialization,
+        specializationTerms: ['emergency medicine', 'critical care', 'casualty', 'trauma center', 'icu'],
+        primarySpecializationTerms: emergencyMatch.primarySpecializationTerms || ['emergency medicine', 'critical care', 'casualty', 'trauma center'],
+        fallbackSpecializationTerms: ['general medicine', 'internal medicine'],
+        icd10: emergencyMatch.icd10 || 'R68.89',
+        urgency: 'emergency',
+        procedure: emergencyMatch.procedure || 'Immediate Emergency Resuscitation & Clinical Triage',
+        procedureTerms: emergencyMatch.procedureTerms || ['emergency opd', 'trauma center', 'casualty', 'icu'],
+        confidence: 100,
+        modelProbability: 1.0,
+        threshold: 0.8,
+        passesThreshold: true,
+        decisionSource: 'emergency_override',
+      };
+      predictions = [topPrediction];
+    } else if (req.query.confirmedCondition) {
       const condStr = String(req.query.confirmedCondition).toLowerCase().trim();
       const isExplicitSafeDefer = req.query.isSafeDefer === 'true' ||
         req.query.confidence === 'null' ||

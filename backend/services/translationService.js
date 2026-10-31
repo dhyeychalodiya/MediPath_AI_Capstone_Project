@@ -855,11 +855,42 @@ function translateRomanizedSymptoms(text) {
     parts.push('headache');
   }
 
-  // Chest pain / Heartburn
-  if (/chhati\s+ma\s+jalan|chhati\s+me\s+jalan|khatta\s+dakar/i.test(lower)) {
-    parts.push('heartburn, acid reflux, sour regurgitation');
+  // Emergency red flags (Heart attack, stroke, appendix, collapse, bleeding)
+  if (/dil\s+ka\s+daura|hruday\s+rog|heart\s+attack/i.test(lower)) {
+    parts.push('heart attack, crushing chest pain');
+  } else if (/chhati\s+ma\s+asahya\s+dard|seene\s+me\s+tez\s+dard|chhati\s+ma\s+jalan|chhati\s+me\s+jalan|khatta\s+dakar/i.test(lower)) {
+    if (/asahya|tez\s+dard/i.test(lower)) {
+      parts.push('severe chest pain');
+    } else {
+      parts.push('heartburn, acid reflux, sour regurgitation');
+    }
   } else if (/seene\s+me\s+dard|chhati\s+me\s+dard|chhati\s+dukhe|chest\s+pain/i.test(lower)) {
     parts.push('chest pain');
+  }
+
+  // Stroke / Paralysis
+  if (/lakwa|pakshaghat|adhrang|paralysis|stroke/i.test(lower)) {
+    parts.push('stroke, sudden paralysis, facial drooping');
+  }
+
+  // Appendix / Appendicitis
+  if (/appendix|appendicitis|apetis/i.test(lower)) {
+    parts.push('appendicitis, appendix pain');
+  }
+
+  // Collapse / Shock / Unconscious
+  if (/behosh|hosh\s+kho|passed\s+out|unconscious/i.test(lower)) {
+    parts.push('loss of consciousness, passed out');
+  }
+
+  // Bleeding / Blood vomiting
+  if (/khoon\s+ki\s+ulti|lohini\s+ulti|raktasrav|vomiting\s+blood/i.test(lower)) {
+    parts.push('vomiting blood, uncontrolled bleeding');
+  }
+
+  // Seizures
+  if (/mirgi|aanchki|fit\s+aana|seizure/i.test(lower)) {
+    parts.push('seizure, convulsions');
   }
 
   // Stomach pain

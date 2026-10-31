@@ -1109,8 +1109,14 @@ export async function findHospitals(input: SearchInput): Promise<SearchOutput> {
     if (input.confirmedConfidence !== undefined && input.confirmedConfidence !== null) {
       searchParams.append("confidence", input.confirmedConfidence.toString());
     } else if (input.confirmedCondition) {
-      searchParams.append("confidence", "null");
-      searchParams.append("isSafeDefer", "true");
+      const lowerCond = input.confirmedCondition.toLowerCase();
+      const isEmergencyCond = (input as { isEmergency?: boolean }).isEmergency || /emergency|heart attack|stroke|coronary|appendic|paralysis|bleeding|seizure/i.test(lowerCond);
+      if (isEmergencyCond) {
+        searchParams.append("isEmergency", "true");
+      } else {
+        searchParams.append("confidence", "null");
+        searchParams.append("isSafeDefer", "true");
+      }
     }
     if (input.filters.tiers.length > 0) {
       searchParams.append("tiers", input.filters.tiers.join(","));

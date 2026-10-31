@@ -1,7 +1,7 @@
 {
   "build_id": "MedP-AI-V2.0-20260917-120906",
   "test_suite": "MediPath AI Model 2.0 Behavioural Validation Suite",
-  "generated_at": "2026-10-22T08:21:00.509Z",
+  "generated_at": "2026-10-31T03:25:01.004Z",
   "summary": {
     "PASS_CONFIDENT_CORRECT": 24,
     "PASS_SAFE_DEFER": 8,
@@ -144,7 +144,7 @@
       "turn0_is_confident": true,
       "final_is_confident": true,
       "decision_source": "safety_rule",
-      "predicted_condition_id": "acute_medical_emergency",
+      "predicted_condition_id": "acute_appendicitis",
       "predicted_condition_name": "Suspected Acute Appendicitis with Warning Signs",
       "model_probability": null,
       "class_threshold": null,
@@ -624,7 +624,7 @@
       "turn0_is_confident": true,
       "final_is_confident": true,
       "decision_source": "safety_rule",
-      "predicted_condition_id": "acute_medical_emergency",
+      "predicted_condition_id": "acute_coronary_syndrome",
       "predicted_condition_name": "Acute Coronary Syndrome / Suspected Heart Attack",
       "model_probability": null,
       "class_threshold": null,

@@ -49,7 +49,7 @@ const RATE_LIMIT_MAX = 120;
 app.use('/api', (req, res, next) => {
   // Never block emergency guidance
   const payload = String(req.body?.symptoms || req.body?.query || req.query?.q || '').toLowerCase();
-  const isEmergency = /\b(chest pain|heart attack|stroke|breathing difficulty|anaphylaxis|uncontrolled bleed|loss of consciousness|seizure|emergency)\b/i.test(payload);
+  const isEmergency = /\b(chest pain|heart attack|myocardial infarction|cardiac arrest|angina|stroke|paralysis|facial droop|appendix|appendicitis|breathing difficulty|shortness of breath|cannot breathe|choking|anaphylaxis|uncontrolled bleed|vomiting blood|loss of consciousness|seizure|convulsion|testicular torsion|emergency)\b/i.test(payload);
   if (isEmergency) return next();
 
   const ip = req.ip || req.connection?.remoteAddress || '127.0.0.1';

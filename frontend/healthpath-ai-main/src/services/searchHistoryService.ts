@@ -140,7 +140,7 @@ export const ensureFirestoreListener = (userId?: string) => {
             procedure: (d.procedure as string) || undefined,
             urgency: (d.urgency as string) || undefined,
             decisionSource: (d.decisionSource as string) || (d.isDirectRouting || d.directRouting ? "direct_routing" : undefined),
-            source: (d.source as string) || (d.isDirectRouting || d.directRouting ? "direct_routing" : "symptom_triage"),
+            source: (d.source as "direct_routing" | "symptom_triage") || (d.isDirectRouting || d.directRouting ? "direct_routing" : "symptom_triage"),
           }));
           items.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
           memoryCache.set(authUid, items);
@@ -175,7 +175,7 @@ export const ensureFirestoreListener = (userId?: string) => {
               procedure: (d.procedure as string) || undefined,
               urgency: (d.urgency as string) || undefined,
               decisionSource: (d.decisionSource as string) || (d.isDirectRouting || d.directRouting ? "direct_routing" : undefined),
-              source: (d.source as string) || (d.isDirectRouting || d.directRouting ? "direct_routing" : "symptom_triage"),
+              source: (d.source as "direct_routing" | "symptom_triage") || (d.isDirectRouting || d.directRouting ? "direct_routing" : "symptom_triage"),
             }));
 
             items.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));

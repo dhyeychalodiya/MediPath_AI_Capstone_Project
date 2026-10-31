@@ -101,6 +101,7 @@ describe("Doctor AI: No More Symptoms Termination & Anti-Looping Suite", () => {
       <DoctorConsultationPanel
         initialQuery={query}
         onDiagnosisConfirmed={vi.fn()}
+        onCancel={vi.fn()}
       />
     );
 
